@@ -23,6 +23,8 @@
     "typescript": "^3.2.1"
   },
   "dependencies": {
-    "@types/node": "^10.12.10"
+    "@types/node": "^10.12.10",
+    "@types/osmosis": "^1.1.1",
+    "osmosis": "^1.1.8"
   }
 }
