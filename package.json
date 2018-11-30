@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node src/app.ts",
+    "build": "tsc",
+    "watch": "tsc --watch"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://gitlab.com/kmchu/kakakucom-scraping-server#readme",
   "devDependencies": {
+    "ts-node": "^7.0.1",
     "typescript": "^3.2.1"
   },
   "dependencies": {
