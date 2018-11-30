@@ -1,0 +1,25 @@
+{
+  "name": "kakakucom-scraping-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/kmchu/kakakucom-scraping-server.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/kmchu/kakakucom-scraping-server/issues"
+  },
+  "homepage": "https://gitlab.com/kmchu/kakakucom-scraping-server#readme",
+  "devDependencies": {
+    "typescript": "^3.2.1"
+  },
+  "dependencies": {
+    "@types/node": "^10.12.10"
+  }
+}
