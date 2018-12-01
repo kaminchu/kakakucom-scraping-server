@@ -8,7 +8,7 @@ type Memory = {
     link: string,
     price: null | number,
     memorySize: string,
-    qty: null | number,
+    quantity: null | number,
     memoryStandard: string,
     memoryInterface: string
 }
@@ -41,7 +41,7 @@ export const get =  async (query: Query): Promise<Memory[]> => {
                 const shopHtml = jqElement.find(".td-price > ul > li.prshop").html();
                 const shop =  shopHtml ? shopHtml.split("<br>")[0].split('<img width="13" height="13" class="vb" src="https://img1.kakaku.k-img.com/images/icon_kaago.gif">')[0] : "";
                 const memorySize = jqElement.find("td").eq(8).text();
-                const qty = jqElement.find("td").eq(9).first().first().text();
+                const quantity = jqElement.find("td").eq(9).first().first().text();
                 const memoryStandard = jqElement.find("td").eq(10).first().first().text();
                 const memoryInterface = jqElement.find("td").eq(11).find("span.sortBox > a").text();
 
@@ -52,7 +52,7 @@ export const get =  async (query: Query): Promise<Memory[]> => {
                     link: link,
                     price: +price.replace(/[^0-9]/g, ''),
                     memorySize: memorySize,
-                    qty: +qty.replace(/[^0-9]/g, ''),
+                    quantity: +quantity.replace(/[^0-9]/g, ''),
                     memoryStandard: memoryStandard,
                     memoryInterface: memoryInterface
                 };
