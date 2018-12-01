@@ -16,10 +16,15 @@ const queryBuilder = (req) => {
                 ...pre,
                 venders: req.query.venders.split(",").map(e => +e)
             };
-        }else if (key === "order" && req.query.order){
+        }else if(key === "order" && req.query.order){
             return {
                 ...pre,
                 order: req.query.order
+            };
+        }else if(key === "memory_size" && req.query.memory_size){
+            return {
+                ...pre,
+                memorySize: req.query.memory_size.split(",").map(e => +e)
             };
         }
         return pre;
