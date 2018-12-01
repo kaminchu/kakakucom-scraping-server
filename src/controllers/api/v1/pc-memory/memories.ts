@@ -32,6 +32,12 @@ const queryBuilder = (req) => {
                 quantity: req.query.quantity.split(",").map(e => +e)
             };
         }
+        else if(key === "memory_standard" && req.query.memory_standard){
+            return {
+                ...pre,
+                memoryStandard: req.query.memory_standard.split(",").map(e => +e)
+            };
+        }
         return pre;
     }, {});
 

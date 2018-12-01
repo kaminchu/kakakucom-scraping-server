@@ -18,6 +18,7 @@ type Query = {
     order?: "asc" | "desc",
     memorySize?: number[],
     quantity?: number[],
+    memoryStandard?: number[]
 }
 
 export const get =  async (query: Query): Promise<Memory[]> => {
@@ -68,6 +69,7 @@ type KakakuQuery = {
     pdf_so?: string,// ソート
     pdf_Spec301?: string,// メモリ容量
     pdf_Spec105?: string,// メモリ枚数
+    pdf_Spec101?: string,// メモリ規格
 };
 const queryConverter = (query: Query): KakakuQuery => {
     return Object.keys(query).reduce((pre, key) => {
@@ -106,6 +108,18 @@ const queryConverter = (query: Query): KakakuQuery => {
             return {
                 ...pre,
                 pdf_Spec105: query.quantity.map(e => qtyMap["" + e]).join(",")
+            };
+        }else if (key === "memoryStandard" && query.memoryStandard){
+            const qtyMap = {//価格com側でidと規格名がグチャグチャなので
+                "0": "5",
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "6",
+            };
+            return {
+                ...pre,
+                pdf_Spec101: query.memoryStandard.map(e => qtyMap["" + e]).join(",")
             };
         }
         return pre;
