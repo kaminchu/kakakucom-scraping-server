@@ -32,7 +32,7 @@ export const get =  async (query: Query): Promise<Memory[]> => {
                     return ;
                 }
                 const name = jqElement.find("td.alignC > a > img").attr("alt");
-                const vender = jqElement.prev().find("td.end.checkItem a.ckitanker > span").text();
+                const vender = jqElement.prev().find("td.end.checkItem a.ckitanker > span").text().trim();
                 const price = jqElement.find(".td-price > ul > li.pryen > a").text();
                 const link = jqElement.find("td.td-price > ul > li.pryen > a").attr("href");
                 const shopHtml = jqElement.find(".td-price > ul > li.prshop").html();

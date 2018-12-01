@@ -1,3 +1,3 @@
-import * as MemoryRepository from "../src/repositories/pc-memory/MemoryRepository";
+import * as VenderRepository from "./VenderRepository";
 
-MemoryRepository.get({venders: [833]}).then(console.log);
+VenderRepository.get().then(console.log);

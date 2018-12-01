@@ -1,6 +1,6 @@
 import { Request, Response} from "express";
 
-import * as VenderRepository from "../../../../repositories/pc-memory/VenderRepository";
+import * as VenderRepository from "../../../../../test/VenderRepository";
 
 export default async (req: Request, res: Response) => {
     res.header("Content-Type", "application/json; charset=utf-8");
