@@ -1,22 +1,23 @@
-import * as client from "cheerio-httpcli";
-
 import { Request, Response} from "express";
 
-export default (req: Request, res: Response) => {
-    res.header("Content-Type", "application/json; charset=utf-8");
-    client.fetch(`http://kakaku.com/pc/pc-memory/itemlist.aspx?pdf_ma=833,2238`, {} , (err, $, res) => {
+import * as MemoryRepository from "../../../../repositories/pc-memory/MemoryRepository";
 
-        $('tr.tr-border').each(console.log);
-    });
+export default async (req: Request, res: Response) => {
+    res.header("Content-Type", "application/json; charset=utf-8");
+
+    const memories = await MemoryRepository.get(queryBuilder(req))
+    res.send(memories);
 };
 
-// type Memory = {
-//     name: string,makers
-//     maker: string,
-//     price: number,
-//     memorySize: string,
-//     qty: number,
-//     memoryStandard: string,
-//     interface: string
-// }
+const queryBuilder = (req) => {
+    return Object.keys(req.query).reduce((pre, key) => {
+        if(key === "venders" && req.query.venders){
+            return {
+                ...pre,
+                venders: req.query.venders.split(",").map(e => +e)
+            };
+        }
+        return pre;
+    }, {});
 
+};

@@ -3,7 +3,7 @@ type Vender = {
     name: string
 };
 
-export default async (): Promise<Vender[]> => {
+export const get = async (): Promise<Vender[]> => {
     return Promise.resolve(venders);
 }; 
 
