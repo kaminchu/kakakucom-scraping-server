@@ -7,13 +7,15 @@
       "removeComments": true,
       "types" : ["node"],
       "strict": true,
+      "noImplicitAny": false,
       "noUnusedLocals": true,
-      "noUnusedParameters": true,
+      //"noUnusedParameters": true,
       "noImplicitReturns": true,
       "noFallthroughCasesInSwitch": true
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "test/**/*"
     ],
     "exclude": [
       "node_modules"

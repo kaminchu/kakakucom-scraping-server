@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/server.ts",
+    "test": "ts-node test/index.ts",
     "build": "tsc",
     "watch": "tsc --watch"
   },
@@ -27,10 +28,9 @@
     "@types/compression": "^0.0.36",
     "@types/express": "^4.16.0",
     "@types/node": "^10.12.10",
-    "@types/osmosis": "^1.1.1",
     "body-parser": "^1.18.3",
+    "cheerio-httpcli": "^0.7.3",
     "compression": "^1.7.3",
-    "express": "^4.16.4",
-    "osmosis": "^1.1.8"
+    "express": "^4.16.4"
   }
 }
