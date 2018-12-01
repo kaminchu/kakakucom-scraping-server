@@ -26,6 +26,11 @@ const queryBuilder = (req) => {
                 ...pre,
                 memorySize: req.query.memory_size.split(",").map(e => +e)
             };
+        }else if(key === "quantity" && req.query.quantity){
+            return {
+                ...pre,
+                quantity: req.query.quantity.split(",").map(e => +e)
+            };
         }
         return pre;
     }, {});
