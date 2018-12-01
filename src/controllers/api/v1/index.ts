@@ -1,13 +1,8 @@
 import * as express from "express";
 
-// マスタ情報
-import makers from "./makers";
-
-// 検索対象
-import memories from "./memories";
+import pc_memory from "./pc-memory/index";
 
 const router = express.Router();
-router.use("/makers", makers);
-router.use("/memories", memories);
+router.use("/pc-memory", pc_memory);
 
 export default router;
