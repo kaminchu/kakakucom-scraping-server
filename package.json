@@ -6,8 +6,7 @@
   "scripts": {
     "start": "ts-node src/server.ts",
     "test": "ts-node test/index.ts",
-    "build": "tsc",
-    "watch": "tsc --watch"
+    "build": "rm -rf ./dist && tsc"
   },
   "repository": {
     "type": "git",

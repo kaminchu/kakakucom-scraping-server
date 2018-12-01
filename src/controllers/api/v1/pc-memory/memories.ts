@@ -16,6 +16,11 @@ const queryBuilder = (req) => {
                 ...pre,
                 venders: req.query.venders.split(",").map(e => +e)
             };
+        }else if (key === "order" && req.query.order){
+            return {
+                ...pre,
+                order: req.query.order
+            };
         }
         return pre;
     }, {});

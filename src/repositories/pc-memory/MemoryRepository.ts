@@ -15,6 +15,7 @@ type Memory = {
 
 type Query = {
     venders?: number[],
+    order?: "asc" | "desc",
 }
 
 export const get =  async (query: Query): Promise<Memory[]> => {
@@ -61,15 +62,29 @@ export const get =  async (query: Query): Promise<Memory[]> => {
 }
 
 type KakakuQuery = {
-    pdf_ma?: string
+    pdf_ma?: string,
+    order?: string
 };
 const queryConverter = (query: Query): KakakuQuery => {
     return Object.keys(query).reduce((pre, key) => {
-        if(key === "venders" && query.venders ){
+        if(key === "venders" && query.venders){
             return {
                 ...pre,
                 pdf_ma: query.venders.join(",")
             };
+        }else if (key === "order" && query.order){
+            if(query.order === "asc"){
+                return {
+                    ...pre,
+                    pdf_so: "p1"
+                };
+            }else if(query.order === "desc"){
+                return {
+                    ...pre,
+                    pdf_so: "p2"
+                };
+            }
+            return pre;
         }
         return pre;
     }, {});
