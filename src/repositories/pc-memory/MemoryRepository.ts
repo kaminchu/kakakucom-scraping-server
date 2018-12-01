@@ -3,14 +3,14 @@ import { BASE_URL } from "../../config";
 
 type Memory = {
     name: string,
-    maker: string,
+    vender: string,
     shop: string,
     link: string,
     price: null | number,
     memorySize: string,
     qty: null | number,
     memoryStandard: string,
-    interface: string
+    memoryInterface: string
 }
 
 type Query = {
@@ -25,27 +25,33 @@ export const get =  async (query: Query): Promise<Memory[]> => {
             }
             const memories: Memory[] = [];
             $('tr.tr-border').each((i, tr) => {
+                const jqElement = $(tr);
+
                 // 情報の入っている行だけ
-                if(!($(tr).find("td.alignC").length && tr.children[1].attribs.class === "alignC")){
+                if(!(jqElement.find("td.alignC").length && tr.children[1].attribs.class === "alignC")){
                     return ;
                 }
-                const name = $(tr).find("td.alignC > a > img").attr("alt");
-                const price = $(tr).find(".td-price > ul > li.pryen > a").text();
-                const link = $(tr).find("td.td-price > ul > li.pryen > a").attr("href");
-                const shopHtml = $(tr).find(".td-price > ul > li.prshop").html();
-                const shop =  shopHtml ? shopHtml.split("<br>")[0] : "";
-        
-                // とりあえず空
+                const name = jqElement.find("td.alignC > a > img").attr("alt");
+                const vender = jqElement.prev().find("td.end.checkItem a.ckitanker > span").text();
+                const price = jqElement.find(".td-price > ul > li.pryen > a").text();
+                const link = jqElement.find("td.td-price > ul > li.pryen > a").attr("href");
+                const shopHtml = jqElement.find(".td-price > ul > li.prshop").html();
+                const shop =  shopHtml ? shopHtml.split("<br>")[0].split('<img width="13" height="13" class="vb" src="https://img1.kakaku.k-img.com/images/icon_kaago.gif">')[0] : "";
+                const memorySize = jqElement.find("td").eq(8).text();
+                const qty = jqElement.find("td").eq(9).first().first().text();
+                const memoryStandard = jqElement.find("td").eq(10).first().first().text();
+                const memoryInterface = jqElement.find("td").eq(11).find("span.sortBox > a").text();
+
                 const memory: Memory = {
                     name: name,
-                    maker: "",
+                    vender: vender,
                     shop: shop,
                     link: link,
                     price: +price.replace(/[^0-9]/g, ''),
-                    memorySize: "",
-                    qty: null,
-                    memoryStandard: "",
-                    interface: ""
+                    memorySize: memorySize,
+                    qty: +qty.replace(/[^0-9]/g, ''),
+                    memoryStandard: memoryStandard,
+                    memoryInterface: memoryInterface
                 };
                 memories.push(memory);
             });
