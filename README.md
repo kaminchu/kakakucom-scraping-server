@@ -20,7 +20,7 @@ node ./dist/server.js
 
   |key|type|example|
   |---|---|---|
-  |venders|number[]|`venders=123,356`|
+  |vender|number[]|`vender=123,356`|
   |order|"asc" &#124; "desc"|`order=asc`|
   |memory_size|number[]|`memory_size=4,8`|
   |quantity|number[]|`quantity=1,2`|

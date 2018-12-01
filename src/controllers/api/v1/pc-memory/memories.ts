@@ -11,10 +11,10 @@ export default async (req: Request, res: Response) => {
 
 const queryBuilder = (req) => {
     return Object.keys(req.query).reduce((pre, key) => {
-        if(key === "venders" && req.query.venders){
+        if(key === "vender" && req.query.vender){
             return {
                 ...pre,
-                venders: req.query.venders.split(",").map(e => +e)
+                vender: req.query.vender.split(",").map(e => +e)
             };
         }else if(key === "order" && req.query.order){
             return {

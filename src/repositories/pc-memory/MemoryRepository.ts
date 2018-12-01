@@ -14,7 +14,7 @@ type Memory = {
 }
 
 type Query = {
-    venders?: number[],
+    vender?: number[],
     order?: "asc" | "desc",
     memorySize?: number[],
     quantity?: number[],
@@ -73,10 +73,10 @@ type KakakuQuery = {
 };
 const queryConverter = (query: Query): KakakuQuery => {
     return Object.keys(query).reduce((pre, key) => {
-        if(key === "venders" && query.venders){
+        if(key === "vender" && query.vender){
             return {
                 ...pre,
-                pdf_ma: query.venders.join(",")
+                pdf_ma: query.vender.join(",")
             };
         }else if (key === "order" && query.order){
             if(query.order === "asc"){
