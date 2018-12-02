@@ -31,11 +31,15 @@ const queryBuilder = (req) => {
                 ...pre,
                 quantity: req.query.quantity.split(",").map(e => +e)
             };
-        }
-        else if(key === "memory_standard" && req.query.memory_standard){
+        }else if(key === "memory_standard" && req.query.memory_standard){
             return {
                 ...pre,
                 memoryStandard: req.query.memory_standard.split(",").map(e => +e)
+            };
+        }else if(key === "price" && req.query.price){
+            return {
+                ...pre,
+                price: req.query.price
             };
         }
         return pre;
